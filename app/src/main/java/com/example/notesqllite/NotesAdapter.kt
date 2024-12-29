@@ -18,12 +18,18 @@ class NotesAdapter(private var note: List<Note>, context: Context): RecyclerView
         return NoteViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount(): Int = note.size
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val note = note[position]
+        holder.titleTextView.text = note.title
+        holder.contentTextView.text = note.content
+
+    }
+
+    fun refreshData(newNotes: List<Note>){
+        note = newNotes
+        notifyDataSetChanged()
     }
 
 
